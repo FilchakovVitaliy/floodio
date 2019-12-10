@@ -5,7 +5,7 @@ pipeline{
   NumberOfUsers = "50"
   RampUP= "2"
   Duration= "60"
-  jmeter-version=5.2
+  jmeter-version="5.2"
   user='vfilchakov'
   jmeter-binpath='home/${user}/${apache-jmeter-${jmeter-version}}/bin'
   // path-for-save='/'
