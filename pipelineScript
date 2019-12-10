@@ -18,7 +18,7 @@ pipeline{
       sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz'
       sh 'ls /var/lib/jenkins/workspace/jmeterFloodio'
       sh 'tar -xf apache-jmeter-5.2.tgz'
-      sh ''
+      sh 'ls /var/lib/jenkins/workspace/jmeterFloodio'
       echo '"Connect to Git"'
       git  branch: '/task1', url: 'https://github.com/FilchakovVitaliy/floodio'
     }
