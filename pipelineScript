@@ -22,6 +22,7 @@ pipeline{
       echo '"Connect to Git"'
       // git  branch: '/task1', url: 'https://github.com/FilchakovVitaliy/floodio'
       git branch: 'task1', url: 'https://github.com/FilchakovVitaliy/floodio'
+      sh 'ls /var/lib/jenkins/workspace/jmeterFloodio'
     }
     }
   
