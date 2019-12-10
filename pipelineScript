@@ -15,7 +15,6 @@ pipeline{
       sh 'pwd'
       echo 'Install Jmeter'
 sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz'
-ls -
 sh 'tar -xf apache-jmeter-${jmeter-version}.tgz'
    echo '"Connect to Git"'
 git branch: '*/task1', url: 'https://github.com/FilchakovVitaliy/floodio'
