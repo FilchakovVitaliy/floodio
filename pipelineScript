@@ -20,7 +20,8 @@ pipeline{
       sh 'tar -xf apache-jmeter-5.2.tgz'
       sh 'ls /var/lib/jenkins/workspace/jmeterFloodio'
       echo '"Connect to Git"'
-      git  branch: '/task1', url: 'https://github.com/FilchakovVitaliy/floodio'
+      // git  branch: '/task1', url: 'https://github.com/FilchakovVitaliy/floodio'
+      git branch: '*/task1', url: 'https://github.com/FilchakovVitaliy/floodio'
     }
     }
   
