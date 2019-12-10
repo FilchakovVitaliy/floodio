@@ -5,7 +5,7 @@ pipeline{
   NumberOfUsers = "50"
   RampUP= "2"
   Duration= "60"
-  jmeter-version='5.2'
+  jmeter-version=5.2
   user='vfilchakov'
   jmeter-binpath='home/${user}/${apache-jmeter-${jmeter-version}}/bin'
   // path-for-save='/'
@@ -15,6 +15,7 @@ pipeline{
       sh 'pwd'
       echo 'Install Jmeter'
 sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz'
+ls -
 sh 'tar -xf apache-jmeter-${jmeter-version}.tgz'
    echo '"Connect to Git"'
 git branch: '*/task1', url: 'https://github.com/FilchakovVitaliy/floodio'
