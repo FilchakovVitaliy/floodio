@@ -29,7 +29,7 @@ pipeline{
     stage("Run Tests"){
     steps{
       echo 'Running'
-      sh '''${jmeterBinPath} -n -t ./floodio/floodio.jmx -Jusers=${NumberOfUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
+      sh '''${jmeterBinPath}/jmeter -n -t ./floodio/floodio.jmx -Jusers=${NumberOfUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
     }
     }
   }
