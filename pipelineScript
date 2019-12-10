@@ -7,7 +7,7 @@ pipeline{
   Duration= "60"
   jmeterVersion="5.2"
   user='vfilchakov'
-  jmeter-binpath='home/${user}/${apache-jmeter-${jmeterVersion}}/bin'
+  jmeterBinPath='home/${user}/${apache-jmeter-${jmeterVersion}}/bin'
   // path-for-save='/'
 }
   stages('Preparation'){
@@ -23,7 +23,7 @@ git branch: '*/task1', url: 'https://github.com/FilchakovVitaliy/floodio'
   stages("Run Tests"){
     steps{
       echo 'Running'
-      sh '''${jmeter-binpath} -n -t ./floodio/floodio.jmx -Jusers=${NumberOfUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
+      sh '''${jmeterBinPath} -n -t ./floodio/floodio.jmx -Jusers=${NumberOfUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
     }
   }
   post {
