@@ -5,7 +5,6 @@ pipeline{
   RampUP= "2"
   Duration= "60"
   jmeterVersion="5.2"
-   workspace='/var/lib/jenkins/workspace/jmeterFloodio'
   user='vfilchakov'
   jmeterBinPath= '/apache-jmeter-5.2/bin'
   // path-for-save='/'
@@ -29,7 +28,7 @@ pipeline{
     stage("Run Tests"){
     steps{
       echo 'Running'
-      sh '''${workspace}${jmeterBinPath}/jmeter -n -t ${workspace}/floodio.jmx -Jusers=${NumberOfUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
+      sh '''${WORKSPACE}${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${NumberOfUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
     }
     }
   }
