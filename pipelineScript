@@ -14,7 +14,6 @@ pipeline{
     steps{
       sh 'pwd'
       echo 'Install Jmeter'
-      sh 'set +x'
       sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz' 
       sh 'ls'
       sh 'tar -xf apache-jmeter-5.2.tgz'
