@@ -6,8 +6,8 @@ pipeline{
   Duration= "60"
   jmeterVersion="5.2"
   user='vfilchakov'
+  workspace=pwd()
   jmeterBinPath= '${workspace}/apache-jmeter-5.2/bin'
-  // ${workspace}
   // path-for-save='/'
 }
   stages{
@@ -15,7 +15,7 @@ pipeline{
     steps{
       sh 'pwd'
       echo 'Install Jmeter'
-      sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz'
+      sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz' 
       sh 'ls ${workspace}'
       sh 'tar -xf apache-jmeter-5.2.tgz'
       sh 'ls ${workspace}'
