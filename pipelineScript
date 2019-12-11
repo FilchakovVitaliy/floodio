@@ -1,4 +1,5 @@
 pipeline{
+  def workspace='''/var/lib/jenkins/workspace/jmeterFloodio'''
   agent any
  environment {
   NumberOfUsers = "50"
@@ -6,8 +7,7 @@ pipeline{
   Duration= "60"
   jmeterVersion="5.2"
   user='vfilchakov'
-workspace='/var/lib/jenkins/workspace/jmeterFloodio'
-  jmeterBinPath= '${workspace}/apache-jmeter-5.2/bin'
+  jmeterBinPath= '''${workspace}/apache-jmeter-5.2/bin'''
   // path-for-save='/'
   // /var/lib/jenkins/workspace/jmeterFloodio
 }
