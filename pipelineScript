@@ -6,9 +6,10 @@ pipeline{
   Duration= "60"
   jmeterVersion="5.2"
   user='vfilchakov'
-  workspace=pwd()
+workspace='/var/lib/jenkins/workspace/jmeterFloodio'
   jmeterBinPath= '${workspace}/apache-jmeter-5.2/bin'
   // path-for-save='/'
+  // /var/lib/jenkins/workspace/jmeterFloodio
 }
   stages{
     stage('Preparation'){
@@ -16,13 +17,12 @@ pipeline{
       sh 'pwd'
       echo 'Install Jmeter'
       sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz' 
-      sh 'ls ${workspace}'
+      sh 'ls'
       sh 'tar -xf apache-jmeter-5.2.tgz'
-      sh 'ls ${workspace}'
+      sh 'ls'
       echo '"Connect to Git"'
-      // git  branch: '/task1', url: 'https://github.com/FilchakovVitaliy/floodio'
       git branch: 'task1', url: 'https://github.com/FilchakovVitaliy/floodio'
-      sh 'ls ${workspace}'
+      sh 'ls'
     }
     }
   
