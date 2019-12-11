@@ -3,16 +3,16 @@ pipeline{
  environment {
   jmeterVersion="5.2"
   user='vfilchakov'
-  jmeterBinPath= 'apache-jmeter-${jmeterVersion}/bin'
+  jmeterBinPath= 'apache-jmeter-5.2/bin'
 }
   stages{
     stage('Preparation'){
     steps{
       sh 'pwd'
       echo 'Install Jmeter'
-      sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-${jmeterVersion}.tgz' 
+      sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz' 
       sh 'ls'
-      sh 'tar -xf apache-jmeter-${jmeterVersion}.tgz'
+      sh 'tar -xf apache-jmeter-5.2.tgz'
       sh 'ls'
       echo '"Connect to Git"'
       git branch: 'task1', url: 'https://github.com/FilchakovVitaliy/floodio'
