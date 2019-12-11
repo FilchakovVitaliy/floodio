@@ -10,11 +10,6 @@ pipeline{
 }
 
   stages{
-       stage('Build'){
-      steps{
-        build job: 'jmeterFloodio', parameters: [string(name: 'USERS', value: '50'), string(name: 'RAMPUP', value: '10'), string(name: 'DURATION', value: '60')]
-      }
-    }
     stage('Preparation'){
     steps{
       sh 'pwd'
