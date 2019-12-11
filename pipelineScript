@@ -1,0 +1,42 @@
+pipeline{
+  agent any
+ environment {
+  NumberOfUsers = "50"
+  RampUP= "2"
+  Duration= "60"
+  jmeterVersion="5.2"
+  // workspace='/var/lib/jenkins/workspace/jmeterFloodio'
+  user='vfilchakov'
+  jmeterBinPath= '''/var/lib/jenkins/workspace/jmeterFloodio/apache-jmeter-5.2/bin'''
+  // path-for-save='/'
+  // /var/lib/jenkins/workspace/jmeterFloodio
+}
+  stages{
+    stage('Preparation'){
+    steps{
+      sh 'pwd'
+      echo 'Install Jmeter'
+      sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-${jmeterVersion}.tgz' 
+      sh 'ls'
+      sh 'tar -xf apache-jmeter-5.2.tgz'
+      sh 'ls'
+      echo '"Connect to Git"'
+      git branch: 'task1', url: 'https://github.com/FilchakovVitaliy/floodio'
+      sh 'ls'
+    }
+    }
+  
+    stage("Run Tests"){
+    steps{
+      echo 'Running'
+      sh '''${jmeterBinPath}/jmeter -n -t /var/lib/jenkins/workspace/jmeterFloodio/floodio.jmx -Jusers=${NumberOfUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
+    }
+    }
+  }
+  post {
+        always {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
+        }
+}
+}
