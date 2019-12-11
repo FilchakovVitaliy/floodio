@@ -6,8 +6,8 @@ pipeline{
   Duration= "60"
   jmeterVersion="5.2"
   user='vfilchakov'
-  jmeterBinPath='/var/lib/jenkins/workspace/jmeterFloodio/apache-jmeter-5.2/bin'
-  // /var/lib/jenkins/workspace/jmeterFloodio
+  jmeterBinPath= '${workspace}/apache-jmeter-5.2/bin'
+  // ${workspace}
   // path-for-save='/'
 }
   stages{
@@ -16,20 +16,20 @@ pipeline{
       sh 'pwd'
       echo 'Install Jmeter'
       sh 'wget http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz'
-      sh 'ls /var/lib/jenkins/workspace/jmeterFloodio'
+      sh 'ls ${workspace}'
       sh 'tar -xf apache-jmeter-5.2.tgz'
-      sh 'ls /var/lib/jenkins/workspace/jmeterFloodio'
+      sh 'ls ${workspace}'
       echo '"Connect to Git"'
       // git  branch: '/task1', url: 'https://github.com/FilchakovVitaliy/floodio'
       git branch: 'task1', url: 'https://github.com/FilchakovVitaliy/floodio'
-      sh 'ls /var/lib/jenkins/workspace/jmeterFloodio'
+      sh 'ls ${workspace}'
     }
     }
   
     stage("Run Tests"){
     steps{
       echo 'Running'
-      sh '''${jmeterBinPath}/jmeter -n -t /var/lib/jenkins/workspace/jmeterFloodio/floodio.jmx -Jusers=${NumberOfUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
+      sh '''${jmeterBinPath}/jmeter -n -t ${workspace}/floodio.jmx -Jusers=${NumberOfUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
     }
     }
   }
