@@ -23,16 +23,6 @@ pipeline{
       sh 'ls'
     }
     }
-    // stage('Build'){
-    //   steps{
-    //     script{
-    //       build(job:"builder-job",parameters:[
-    //         string(name:'USERS',value:"${params.USERS}"),
-    //          string(name:'RAMPUP',value:"${params.RAMPUP}"),
-    //        string(name:'DURATION',value:"${params.DURATION}")])
-    //     }
-    //   }
-    // }
     stage("Run Tests"){
     steps{
       echo 'Running'
