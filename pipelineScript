@@ -12,7 +12,6 @@ pipeline{
   stages{
     stage('Preparation'){
     steps{
-      // deleteDir()
       sh 'pwd'
       echo 'Install Jmeter'
       sh 'wget -q http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz' 
@@ -41,7 +40,7 @@ pipeline{
   post {
         always {
             echo 'One way or another, I have finished'
-            // deleteDir() /* clean up our workspace */
+            deleteDir() /* clean up our workspace */
             sh 'ls'
         }
 }
