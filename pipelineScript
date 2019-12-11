@@ -1,9 +1,9 @@
 pipeline{
   agent any
   parameters {
-  string defaultValue: '1', description: 'number of users in scenario', name: 'NumberUsers', trim: false
-  string defaultValue: '1', description: 'rampUp in scenario', name: 'RampUp', trim: false
-  string defaultValue: '1', description: 'duration of scenario', name: 'Duration', trim: false
+  string defaultValue: '1', description: 'number of users in scenario', name: 'USERS', trim: false
+  string defaultValue: '1', description: 'rampUp in scenario', name: 'RAMPUP', trim: false
+  string defaultValue: '1', description: 'duration of scenario', name: 'DURATION', trim: false
 }
  environment {
   jmeterBinPath= 'apache-jmeter-5.2/bin'
@@ -27,7 +27,7 @@ pipeline{
     stage("Run Tests"){
     steps{
       echo 'Running'
-      sh '''${WORKSPACE}/${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${params.NumberUsers} -JrampUp=${params.RampUp} -Jdiration=${params.Duration}'''
+      sh '''${WORKSPACE}/${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${params.USERS} -JrampUp=${params.RAMPUP} -Jdiration=${params.DURATION}'''
     }
     }
   }
