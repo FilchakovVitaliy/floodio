@@ -1,9 +1,6 @@
 pipeline{
   agent any
  environment {
-  // NumberOfUsersp = "50"
-  // RampUPp= "2"
-  // Durationp= "60"
   jmeterVersion="5.2"
   user='vfilchakov'
   jmeterBinPath= 'apache-jmeter-5.2/bin'
@@ -26,9 +23,7 @@ pipeline{
     stage("Run Tests"){
     steps{
       echo 'Running'
-    //   echo ${NumberUsers}
-    //  echo ${RampUp}
-      sh '''${WORKSPACE}/${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${NumberUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
+      sh '''${WORKSPACE}/${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${NumberUsers} -JrampUp=${RampUp} -Jdiration=${Duration}'''
     }
     }
   }
