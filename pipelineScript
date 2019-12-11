@@ -1,3 +1,4 @@
+def workspace='/var/lib/jenkins/workspace/jmeterFloodio'
 pipeline{
   agent any
  environment {
@@ -5,7 +6,7 @@ pipeline{
   RampUP= "2"
   Duration= "60"
   jmeterVersion="5.2"
-  workspace='/var/lib/jenkins/workspace/jmeterFloodio'
+  // workspace='/var/lib/jenkins/workspace/jmeterFloodio'
   user='vfilchakov'
   jmeterBinPath= '''${workspace}/apache-jmeter-5.2/bin'''
   // path-for-save='/'
