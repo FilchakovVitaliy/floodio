@@ -12,7 +12,7 @@ pipeline{
   stages{
     stage('Preparation'){
     steps{
-      deleteDir()
+      // deleteDir()
       sh 'pwd'
       echo 'Install Jmeter'
       sh 'wget -q http://apache.ip-connect.vn.ua//jmeter/binaries/apache-jmeter-5.2.tgz' 
