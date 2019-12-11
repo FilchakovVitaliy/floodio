@@ -1,14 +1,12 @@
 pipeline{
   agent any
  environment {
-  NumberOfUsers = "50"
-  RampUP= "2"
-  Duration= "60"
+  NumberOfUsersp = "50"
+  RampUPp= "2"
+  Durationp= "60"
   jmeterVersion="5.2"
   user='vfilchakov'
   jmeterBinPath= 'apache-jmeter-5.2/bin'
-  // path-for-save='/'
-  // /var/lib/jenkins/workspace/jmeterFloodio
 }
   stages{
     stage('Preparation'){
@@ -28,7 +26,9 @@ pipeline{
     stage("Run Tests"){
     steps{
       echo 'Running'
-      sh '''${WORKSPACE}/${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${NumberOfUsers} -JrampUp=${RampUP} -Jdiration=${Duration}'''
+      echo '${NumberUsers}'
+     echo '${RampUp}'
+      sh '''${WORKSPACE}/${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${NumberOfUsersp} -JrampUp=${RampUPp} -Jdiration=${Durationp}'''
     }
     }
   }
@@ -36,6 +36,7 @@ pipeline{
         always {
             echo 'One way or another, I have finished'
             deleteDir() /* clean up our workspace */
+            sh 'ls'
         }
 }
 }
