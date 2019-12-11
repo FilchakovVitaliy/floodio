@@ -29,7 +29,7 @@ pipeline{
       echo 'Running'
       sh '''${WORKSPACE}/${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${USERS} -JrampUp=${RAMPUP} -Jduration=${DURATION} -l ${WORKSPACE}/testresult.jtl'''
       sh 'ls'
-      sh 'cat ${WORKSPACE}/jmeter.log'
+      // sh 'cat ${WORKSPACE}/jmeter.log'
     }
     }
     stage("Reporting"){
