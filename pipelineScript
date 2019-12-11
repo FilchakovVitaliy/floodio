@@ -29,7 +29,11 @@ pipeline{
       echo 'Running'
       sh '''${WORKSPACE}/${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${USERS} -JrampUp=${RAMPUP} -Jdiration=${DURATION} -l ${WORKSPACE}/testresult.jtl'''
       sh 'ls'
-      perfReport compareBuildPrevious: true, filterRegex: '', sourceDataFiles: 'jmeter'
+    }
+    stage("Reporting"){
+      steps{
+         perfReport compareBuildPrevious: true, filterRegex: '', sourceDataFiles: 'testresult'
+      }
     }
     }
   }
