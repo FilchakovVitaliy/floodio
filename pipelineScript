@@ -33,7 +33,7 @@ pipeline{
     }
     stage("Reporting"){
       steps{
-         perfReport compareBuildPrevious: true, filterRegex: '', sourceDataFiles: 'testresult'
+         perfReport compareBuildPrevious: true, filterRegex: '', sourceDataFiles: 'testresult.jtl'
       }
     }
   }
