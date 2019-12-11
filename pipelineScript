@@ -1,8 +1,6 @@
 pipeline{
   agent any
  environment {
-  jmeterVersion="5.2"
-  user='vfilchakov'
   jmeterBinPath= 'apache-jmeter-5.2/bin'
 }
   stages{
