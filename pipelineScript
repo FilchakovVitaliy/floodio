@@ -27,7 +27,7 @@ pipeline{
     stage("Run Tests"){
     steps{
       echo 'Running'
-      sh '''${WORKSPACE}/${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${NumberUsers} -JrampUp=${RampUp} -Jdiration=${Duration}'''
+      sh '''${WORKSPACE}/${jmeterBinPath}/jmeter -n -t ${WORKSPACE}/floodio.jmx -Jusers=${params.NumberUsers} -JrampUp=${params.RampUp} -Jdiration=${params.Duration}'''
     }
     }
   }
