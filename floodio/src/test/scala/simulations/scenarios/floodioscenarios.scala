@@ -10,7 +10,7 @@ import scala.io.Source
 
 object floodioscenarios {
   val pauseProp = new Properties()
-  val source = getClass.getResource("/pause.properties").getPath
+  val source = getClass.getResource("pause.properties").getPath
   println(source)
   pauseProp.load(new FileInputStream(source))
   val minPause = pauseProp.getProperty("minDuration")
