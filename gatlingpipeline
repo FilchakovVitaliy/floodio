@@ -13,7 +13,12 @@ stages{
         steps{
             sh 'pwd'
             echo 'Install gatling'
-            sh 'wget https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.3.1/gatling-charts-highcharts-bundle-3.3.1-bundle.zip'
+            sh 'wget -q https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.3.1/gatling-charts-highcharts-bundle-3.3.1-bundle.zip'
+            sh 'ls'
+            sh 'unzip gatling-charts-highcharts-bundle-3.3.1-bundle.zip ${WORKSPACE}'
+            sh 'ls'
+            echo '"Connect to Git"'
+            git branch: 'gatlingtask', url: 'https://github.com/FilchakovVitaliy/floodio'
             sh 'ls'
         }
     }
@@ -25,5 +30,4 @@ stages{
             sh 'ls'
         }
 }
-
 }
