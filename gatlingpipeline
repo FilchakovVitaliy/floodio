@@ -28,7 +28,7 @@ stages{
     stage("Run Tests"){
     steps{
       echo 'Running'
-      sh '''JAVA_OPTS=-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION} & ${gatlingPath}/gatling.sh ${WORKSPACE}/floodio  ${WORKSPACE}/floodio/src/test/resources -s ${WORKSPACE}/floodio/${simulationPath}/${simulationName}'''
+      sh '''JAVA_OPTS=-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION} & ${gatlingPath}/gatling.sh floodio  floodio/src/test/resources -s /floodio/${simulationPath}/${simulationName}'''
       sh 'ls'
       
     }
