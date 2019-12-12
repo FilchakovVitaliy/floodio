@@ -12,6 +12,10 @@ environment {
  projectPath="floodio"
 }
 stages{
+     stage('CleanWorkspace') {
+            steps {
+                cleanWs()
+            }
     stage('Preparation'){
         steps{
             sh 'pwd'
@@ -35,11 +39,11 @@ stages{
     }
     }
 }
- post {
-        always {
-            echo 'One way or another, I have finished'
-            deleteDir() /* clean up our workspace */
-            sh 'ls'
-        }
-}
+//  post {
+//         always {
+//             echo 'One way or another, I have finished'
+//             deleteDir() /* clean up our workspace */
+//             sh 'ls'
+//         }
+// }
 }
