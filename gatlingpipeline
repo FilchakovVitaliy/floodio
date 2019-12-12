@@ -16,6 +16,7 @@ stages{
             steps {
                 cleanWs()
             }
+     }
     stage('Preparation'){
         steps{
             sh 'pwd'
