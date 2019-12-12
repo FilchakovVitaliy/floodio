@@ -8,7 +8,7 @@ import simulations.requests.FloodIoExec._
 
 object floodioscenarios {
   val pauseProp = new Properties()
-  val rootPath: String = Thread.currentThread.getContextClassLoader.getResource("").getPath
+  val rootPath: String = Thread.currentThread.getClass.getResource().getPath
   print(rootPath)
   pauseProp.load(new FileInputStream(rootPath+"/src/test/resources/pause.properties"))
   val minPause = pauseProp.getProperty("minDuration")
