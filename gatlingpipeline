@@ -7,7 +7,7 @@ pipeline{
 }
 environment {
  gatlingPath='gatling-charts-highcharts-bundle-3.3.1/bin'
- simulation='src/test/scala/simulations/FloodioSimulation.scala'
+ simulationPath='/src/test/scala/simulations/FloodioSimulation.scala'
  projectPath="floodio"
 }
 stages{
@@ -33,7 +33,7 @@ stages{
     steps{
       echo 'Running'
       sh 'pwd'
-      sh '''JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" & ${gatlingPath}/gatling.sh -rsf ${projectPath}/src/test/resources -s floodio/src/test/scala/simulations/FloodioSimulation.scala'''
+      sh '''JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" & ${gatlingPath}/gatling.sh -rsf ${projectPath}/src/test/resources -s ${projectPath}/${simulationPath}'''
       sh 'ls'
       
     }
