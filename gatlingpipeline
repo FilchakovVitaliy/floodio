@@ -7,6 +7,8 @@ pipeline{
 }
 environment {
  gatlingPath='gatling-charts-highcharts-bundle-3.3.1/bin'
+ simulationPath='src/test/scala/simulations'
+ simulationName='FloodioSimulation.scala'
 }
 stages{
     stage('Preparation'){
@@ -22,6 +24,14 @@ stages{
             git branch: 'gatlingtask', url: 'https://github.com/FilchakovVitaliy/floodio'
             sh 'ls'
         }
+    }
+    stage("Run Tests"){
+    steps{
+      echo 'Running'
+      sh '''JAVA_OPTS=-Dusers=${USERS} -Dramp={RAMPUP} -Dduration={DURATION} & ${gatlingPath}/gatling.sh ${WORKSPACE}/floodio  ${WORKSPACE}/floodio/src/test/resources -s ${WORKSPACE}/floodio/${simulationPath}/${simulationName}'''
+      sh 'ls'
+      
+    }
     }
 }
  post {
