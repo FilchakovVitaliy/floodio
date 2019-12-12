@@ -9,15 +9,17 @@ import simulations.requests.FloodIoExec._
 import scala.io.Source
 
 object floodioscenarios {
-  val pauseProp = new Properties()
-  val source = getClass.getResource("pause.properties").getPath
-  println(source)
-  pauseProp.load(new FileInputStream(source))
-  val minPause = pauseProp.getProperty("minDuration")
-  val maxPause = pauseProp.getProperty("maxDuration")
+//  val pauseProp = new Properties()
+//  val source = getClass.getResource("/pause.properties").getPath
+//  println(source)
+//  pauseProp.load(new FileInputStream(source))
+//  pauseProp.getProperty("minDuration")
+//  pauseProp.getProperty("maxDuration")
+  val minPause = 1
+  val maxPause = 5
   val duration=java.lang.Long.getLong("duration", 60)
   val floodIoScenario = scenario("FLOOD").during(duration) {
-    exec(loadHomePage).pause(minPause, maxPause)
+        exec(loadHomePage).pause(minPause, maxPause)
       .exec(completeStep1).pause(minPause, maxPause)
       .exec(loadStep2Page).pause(minPause, maxPause)
       .exec(completeStep2).pause(minPause, maxPause)
