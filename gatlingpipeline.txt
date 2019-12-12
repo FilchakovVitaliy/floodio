@@ -1,5 +1,5 @@
 pipeline{
-     agent any
+  agent any
   parameters {
   string defaultValue: '1', description: 'number of users in scenario', name: 'USERS', trim: false
   string defaultValue: '1', description: 'rampUp in scenario', name: 'RAMPUP', trim: false
