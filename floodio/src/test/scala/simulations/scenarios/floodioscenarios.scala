@@ -6,10 +6,13 @@ import java.util.Properties
 import io.gatling.core.Predef._
 import simulations.requests.FloodIoExec._
 
+import scala.io.Source
+
 object floodioscenarios {
   val pauseProp = new Properties()
-  val rootPath: String = Thread.currentThread.getClass.getResource("").getPath
-  pauseProp.load(new FileInputStream(rootPath+"/src/test/resources/pause.properties"))
+  val source = getClass.getResource("/pause.properties").getPath
+  println(source)
+  pauseProp.load(new FileInputStream(source))
   val minPause = pauseProp.getProperty("minDuration")
   val maxPause = pauseProp.getProperty("maxDuration")
   val duration=java.lang.Long.getLong("duration", 60)
