@@ -17,7 +17,6 @@ stages{
             echo 'Install gatling'
             sh 'wget -q https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.3.1/gatling-charts-highcharts-bundle-3.3.1-bundle.zip'
             sh 'ls'
-            sh 'ls ${WORKSPACE}'
             sh 'unzip -q gatling-charts-highcharts-bundle-3.3.1-bundle.zip'
             sh 'ls'
             echo '"Connect to Git"'
@@ -28,7 +27,7 @@ stages{
     stage("Run Tests"){
     steps{
       echo 'Running'
-      sh '''JAVA_OPTS=-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION} & ${gatlingPath}/gatling.sh floodio  floodio/src/test/resources -s /floodio/${simulationPath}/${simulationName}'''
+      sh '''JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" & ${gatlingPath}/gatling.sh floodio  floodio/src/test/resources -s /floodio/${simulationPath}/${simulationName}'''
       sh 'ls'
       
     }
