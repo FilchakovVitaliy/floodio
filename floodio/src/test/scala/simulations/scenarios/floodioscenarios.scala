@@ -9,7 +9,8 @@ import simulations.requests.FloodIoExec._
 object floodioscenarios {
   val pauseProp = new Properties()
   val rootPath: String = Thread.currentThread.getContextClassLoader.getResource("").getPath
-  pauseProp.load(new FileInputStream("C:\\Users\\Vitalii_Filchakov\\IdeaProjects\\floodio\\src\\test\\resources\\pause.properties"))
+  print(rootPath)
+  pauseProp.load(new FileInputStream("pause.properties"))
   val minPause = pauseProp.getProperty("minDuration")
   val maxPause = pauseProp.getProperty("maxDuration")
   val duration=java.lang.Long.getLong("duration", 60)
