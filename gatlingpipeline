@@ -28,17 +28,17 @@ stages{
     stage("Run Tests"){
     steps{
       echo 'Running'
-      sh '''JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" & ${gatlingPath}/gatling.sh -sf ${WORKSPACE}/${projectPath} -rsf floodio/src/test/resources -s /floodio/${simulationPath}/${simulationName}'''
+      sh '''JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" & ${WORKSPACE}/${gatlingPath}/gatling.sh -sf ${WORKSPACE}/${projectPath} -rsf ${WORKSPACE}/floodio/src/test/resources -s ${WORKSPACE}/${projectPath}/${simulationPath}/${simulationName}'''
       sh 'ls'
       
     }
     }
 }
-//  post {
-//         always {
-//             echo 'One way or another, I have finished'
-//             deleteDir() /* clean up our workspace */
-//             sh 'ls'
-//         }
-// }
+ post {
+        always {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
+            sh 'ls'
+        }
+}
 }
