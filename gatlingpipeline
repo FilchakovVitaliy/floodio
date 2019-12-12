@@ -6,7 +6,7 @@ pipeline{
   string defaultValue: '60', description: 'duration of scenario', name: 'DURATION', trim: false
 }
 environment {
- 
+ gatlingPath='gatling-charts-highcharts-bundle-3.3.1/bin'
 }
 stages{
     stage('Preparation'){
