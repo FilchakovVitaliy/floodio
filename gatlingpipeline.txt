@@ -1,3 +1,29 @@
 pipeline{
-    
+     agent any
+  parameters {
+  string defaultValue: '1', description: 'number of users in scenario', name: 'USERS', trim: false
+  string defaultValue: '1', description: 'rampUp in scenario', name: 'RAMPUP', trim: false
+  string defaultValue: '60', description: 'duration of scenario', name: 'DURATION', trim: false
+}
+environment {
+ 
+}
+stages{
+    stage('Preparation'){
+        steps{
+            sh 'pwd'
+            echo 'Install gatling'
+            sh 'wget https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.3.1/gatling-charts-highcharts-bundle-3.3.1-bundle.zip'
+            sh 'ls'
+        }
+    }
+}
+ post {
+        always {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
+            sh 'ls'
+        }
+}
+
 }
