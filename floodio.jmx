@@ -1017,7 +1017,7 @@ log.info (&apos;MAXIMUM &apos;+maximum)</stringProp>
             </elementProp>
             <elementProp name="graphiteHost" elementType="Argument">
               <stringProp name="Argument.name">graphiteHost</stringProp>
-              <stringProp name="Argument.value">10.23.7.3</stringProp>
+              <stringProp name="Argument.value">127.0.0.1</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="graphitePort" elementType="Argument">
