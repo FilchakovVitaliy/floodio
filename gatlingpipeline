@@ -38,5 +38,11 @@ stages{
             sh 'ls'
         }
     }
+    stage("Reporting"){
+        steps{
+            echo 'Reporting'
+            gatlingArchive()
+        }
+    }
 }
 }
