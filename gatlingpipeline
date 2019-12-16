@@ -34,7 +34,7 @@ stages{
         steps{
             echo 'Running'
             sh 'pwd'
-            sh '''JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" & ${gatlingPath}/gatling.sh -rsf ${projectResourcePath} -sf ${WORKSPACE}/${projectpath} -s ${simulationPath}'''
+            sh '''${gatlingPath}/gatling.sh -rsf ${projectResourcePath} -sf ${WORKSPACE}/${projectpath} -s ${simulationPath}&JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" & '''
             sh 'echo $JAVA_OPTS'
         }
     }
