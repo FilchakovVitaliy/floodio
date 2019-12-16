@@ -7,7 +7,7 @@ pipeline{
 }
 environment {
  gatlingPath='gatling-charts-highcharts-bundle-3.3.1/bin'
- simulationPath='simulations.FloodioSimulation.scala'
+ simulationPath='simulations.FloodioSimulation'
  projectPath="floodio/src/test/scala"
  projectResourcePath="floodio/src/test/resources"
 }
