@@ -7,8 +7,9 @@ pipeline{
 }
 environment {
  gatlingPath='gatling-charts-highcharts-bundle-3.3.1/bin'
- simulationPath='/src/test/scala/simulations/FloodioSimulation.scala'
- projectPath="floodio"
+ simulationPath='simulations.FloodioSimulation.scala'
+ projectPath="floodio/src/test/scala"
+ projectResourcePath="floodio/src/test/resources"
 }
 stages{
      stage('CleanWorkspace') {
@@ -30,13 +31,12 @@ stages{
         }  
     }
     stage("Run Tests"){
-    steps{
-      echo 'Running'
-      sh 'pwd'
-      sh '''JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" & ${gatlingPath}/gatling.sh -rsf ${projectPath}/src/test/resources -s ${projectPath}${simulationPath}'''
-      sh 'ls'
-      
-    }
+        steps{
+            echo 'Running'
+            sh 'pwd'
+            sh '''JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" & ${gatlingPath}/gatling.sh -rsf ${projectResourcePath} -sf ${WORKSPACE}/${projectpath} -s ${simulationPath}'''
+            sh 'ls'
+        }
     }
 }
 }
