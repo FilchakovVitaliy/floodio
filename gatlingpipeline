@@ -35,9 +35,9 @@ stages{
             echo 'Running'
             sh 'pwd'
             // sh '''JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" && ${gatlingPath}/gatling.sh -rsf ${projectResourcePath} -sf ${WORKSPACE}/${projectpath} -s ${simulationPath}'''           
-            sh 'cd ${gatlingPath}'
+            // sh 'cd ${gatlingPath}'
             sh 'ls'
-            sh '''export JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" && ./gatling.sh -sf ${WORKSPACE}/${projectpath} -rsf ${WORKSPACE}/${projectResourcePath}  -s ${simulationPath}'''
+            sh '''${gatlingPath} export JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" && ./gatling.sh -sf ${WORKSPACE}/${projectpath} -rsf ${WORKSPACE}/${projectResourcePath}  -s ${simulationPath}'''
         }
     }
     stage("Reporting"){
