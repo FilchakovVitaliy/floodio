@@ -25,7 +25,6 @@ stages{
             sh 'ls'
             echo 'Install gatling'
             sh 'wget -q https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.3.1/gatling-charts-highcharts-bundle-3.3.1-bundle.zip'
-            sh 'ls'
             sh 'unzip -q gatling-charts-highcharts-bundle-3.3.1-bundle.zip'
             sh 'ls'
         }  
@@ -33,11 +32,6 @@ stages{
     stage("Run Tests"){
         steps{
             echo 'Running'
-            sh 'pwd'
-            // sh '''JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" && ${gatlingPath}/gatling.sh -rsf ${projectResourcePath} -sf ${WORKSPACE}/${projectpath} -s ${simulationPath}'''           
-            // sh 'cd ${gatlingPath}'
-            sh 'ls'
-            // sh '''cd ${gatlingPath} && export JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" && ./gatling.sh -sf ${WORKSPACE}/${projectpath} -rsf ${WORKSPACE}/${projectResourcePath}  -s ${simulationPath}'''
             sh '''export JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" && ${gatlingPath}/gatling.sh -sf ${WORKSPACE}/${projectpath} -rsf ${WORKSPACE}/${projectResourcePath}  -s ${simulationPath}'''
         }
     }
