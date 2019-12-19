@@ -7,6 +7,7 @@ pipeline{
 }
 environment {
  gatlingPath='gatling-charts-highcharts-bundle-3.3.1/bin'
+ gatlingConfigPath='gatling-charts-highcharts-bundle-3.3.1/conf'
  simulationPath='simulations.FloodioSimulation'
  projectPath="floodio/src/test/scala"
  projectResourcePath="floodio/src/test/resources"
@@ -27,6 +28,7 @@ stages{
             sh 'wget -q https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.3.1/gatling-charts-highcharts-bundle-3.3.1-bundle.zip'
             sh 'unzip -q gatling-charts-highcharts-bundle-3.3.1-bundle.zip'
             sh 'ls'
+            sh 'mv ${WORKSPACE}/${projectResourcePath}/gatling.conf ${WORKSPACE}/${gatlingConfigPath}'
         }  
     }
     stage("Run Tests"){
