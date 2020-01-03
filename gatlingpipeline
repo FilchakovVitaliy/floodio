@@ -30,7 +30,8 @@ stages{
             // sh 'ls'
             // sh 'mv ${WORKSPACE}/${projectResourcePath}/gatling.conf ${WORKSPACE}/${gatlingConfigPath}'
             sh """docker run -it -d --rm -v ${WORKSPACE}/${projectResourcePath}/gatling.conf:/opt/gatling/conf \ -v ${WORKSPACE}/floodio/src/test:/opt/gatling/user-files \
-            -v ${WORKSPACE}/gatling-charts-highcharts-bundle-3.3.1/results:/opt/gatling/results \ --name """
+            -v ${WORKSPACE}/gatling-charts-highcharts-bundle-3.3.1/results:/opt/gatling/results"""
+            sh """docker run -it --rm gatling:latest"""
         }  
     }
     stage("Run Tests"){
