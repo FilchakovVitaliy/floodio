@@ -29,14 +29,14 @@ stages{
             // sh 'unzip -q gatling-charts-highcharts-bundle-3.3.1-bundle.zip'
             // sh 'ls'
             // sh 'mv ${WORKSPACE}/${projectResourcePath}/gatling.conf ${WORKSPACE}/${gatlingConfigPath}'
-            sh '''docker run -it -d --rm -v ${WORKSPACE}/${projectResourcePath}:/opt/gatling/conf -v ${WORKSPACE}/floodio/src/test:/opt/gatling/user-files -v ${WORKSPACE}/gatling-charts-highcharts-bundle-3.3.1/results:/opt/gatling/results gatling:latest'''
-           
+            // sh '''docker run -it -d --rm -v ${WORKSPACE}/${projectResourcePath}:/opt/gatling/conf -v ${WORKSPACE}/floodio/src/test:/opt/gatling/user-files -v ${WORKSPACE}/gatling-charts-highcharts-bundle-3.3.1/results:/opt/gatling/results gatling:latest'''
+         sh'''docker build -t gatling .'''  
         }  
     }
     stage("Run Tests"){
         steps{
-            echo 'Running'
-            sh '''export JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" && ${gatlingPath}/gatling.sh -sf ${WORKSPACE}/${projectpath} -rsf ${WORKSPACE}/${projectResourcePath}  -s ${simulationPath}'''
+        //    ls '''export JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" && ${gatlingPath}/gatling.sh -sf ${WORKSPACE}/${projectpath} -rsf ${WORKSPACE}/${projectResourcePath}  -s ${simulationPath}'''
+        sh '''docker run -it gatling:latest -sf /opt/gatling/user-files/scala -rsf /opt/gatling/user-files/resources -s simulations.FloodioSimulation'''
         }
     }
     stage("Reporting"){
