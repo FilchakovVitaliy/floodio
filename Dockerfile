@@ -34,10 +34,9 @@ WORKDIR  /opt/gatling
 
 # COPY floodio/floodio/src/test/resources/gatling.conf /opt/gatling/conf/gatling.conf
 # COPY floodio/floodio/src/test /opt/gatling/user-files
-# COPY ${WORKSPACE}/floodio/src/test/resources/gatling.conf /opt/gatling/conf/gatling.conf
-# COPY ${WORKSPACE}/floodio/src/test opt/gatling/user-files
-COPY /var/lib/jenkins/workspace/gatlingFloodio/floodio/src/test/resources/gatling.conf /opt/gatling/conf/gatling.conf
-COPY /var/lib/jenkins/workspace/gatlingFloodio/floodio/src/test opt/gatling/user-files
+COPY ${WORKSPACE}/floodio/src/test/resources/gatling.conf /opt/gatling/conf/gatling.conf
+COPY ${WORKSPACE}/floodio/src/test opt/gatling/user-files
+
 
 ENV PATH /opt/gatling/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV GATLING_HOME /opt/gatling
