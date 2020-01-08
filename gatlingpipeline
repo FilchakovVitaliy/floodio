@@ -36,7 +36,7 @@ stages{
     stage("Run Tests"){
         steps{
         //    ls '''export JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" && ${gatlingPath}/gatling.sh -sf ${WORKSPACE}/${projectpath} -rsf ${WORKSPACE}/${projectResourcePath}  -s ${simulationPath}'''
-        sh '''docker run gatling:latest -sf opt/gatling/opt/gatling/user-files/scala -rsf opt/gatling/opt/gatling/user-files/resources -s simulations.FloodioSimulation'''
+        sh '''docker run -e JAVA_OPTS="-Dusers=${USERS} -Dramp=${RAMPUP} -Dduration=${DURATION}" gatling:latest -sf opt/gatling/opt/gatling/user-files/scala -rsf opt/gatling/opt/gatling/user-files/resources -s simulations.FloodioSimulation'''
         }
     }
     stage("Reporting"){
